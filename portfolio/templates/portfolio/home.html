@@ -1,0 +1,46 @@
+{% extends 'portfolio/base.html' %}
+
+
+
+{% block content %}
+
+{% load static %}
+
+<div class="row justify-content-center my-3">
+  <div class="col-2">
+    <img src="{% static 'portfolio/photojpg.jpg' %}"  height="200" width="200" class="img-fluid">
+  </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h2 id="hometext" class="font-weight-bold"> Ravi Kumar is  Commander-in-Chief at HomeCode and live in Hyderabad</h2>
+  </div>
+</div>
+
+<h2 class="mt-5">Portfolio</h2>
+
+<hr>
+
+<div class="row">
+  {% for project in projects %}
+  <div class="col-lg-4 col-md-6">
+    {% if project.url %}
+     <a href="{{ project.url }}" target="_blank">
+        <img src="{{ project.image.url }}" class="img-fluid mb-2" height="135" width="135">
+     </a>
+
+     {% else %}
+
+     <img src="{{ project.image.url }}" class="img-fluid mb-2" height="135" width="135">
+     {% endif %}
+
+     <h3>{{ project.title }}</h3>
+     <p> {{ poject.description }}</p>
+
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endblock %}
